@@ -59,6 +59,7 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.spreadsheetControl1 = new CodelabsSheet.Controls.SpreadsheetControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -298,12 +299,21 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(243, 44);
             this.aboutToolStripMenuItem.Text = "&About...";
             // 
+            // spreadsheetControl1
+            // 
+            this.spreadsheetControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spreadsheetControl1.Location = new System.Drawing.Point(0, 40);
+            this.spreadsheetControl1.Name = "spreadsheetControl1";
+            this.spreadsheetControl1.Size = new System.Drawing.Size(1214, 689);
+            this.spreadsheetControl1.TabIndex = 1;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1214, 729);
+            this.Controls.Add(this.spreadsheetControl1);
             this.Controls.Add(this.menuStrip1);
             this.MinimumSize = new System.Drawing.Size(1240, 800);
             this.Name = "MainForm";
@@ -347,6 +357,7 @@
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private Controls.SpreadsheetControl spreadsheetControl1;
     }
 }
 
