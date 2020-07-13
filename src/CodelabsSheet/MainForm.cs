@@ -17,5 +17,16 @@ namespace CodelabsSheet
             InitializeComponent();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
