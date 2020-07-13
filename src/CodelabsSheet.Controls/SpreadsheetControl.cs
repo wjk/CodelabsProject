@@ -93,6 +93,24 @@ namespace CodelabsSheet.Controls
             Controls.Add(scrollPanel);
         }
 
+        public string GetCellContents(int row, int column)
+        {
+            if (row < 0 || row >= RowCount) throw new ArgumentOutOfRangeException("Row number too big");
+            if (column < 0 || column >= ColumnCount) throw new ArgumentOutOfRangeException("Column number too big");
+
+            TextBox box = (TextBox)LayoutPanel.GetControlFromPosition(column + 1, row + 1);
+            return box.Text;
+        }
+
+        public void SetCellContents(int row, int column, string text)
+        {
+            if (row < 0 || row >= RowCount) throw new ArgumentOutOfRangeException("Row number too big");
+            if (column < 0 || column >= ColumnCount) throw new ArgumentOutOfRangeException("Column number too big");
+
+            TextBox box = (TextBox)LayoutPanel.GetControlFromPosition(column + 1, row + 1);
+            box.Text = text;
+        }
+
         public int RowCount
         {
             get
