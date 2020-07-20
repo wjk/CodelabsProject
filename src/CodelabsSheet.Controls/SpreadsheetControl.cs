@@ -43,7 +43,7 @@ namespace CodelabsSheet.Controls
                 else
                 {
                     style.SizeType = SizeType.Absolute;
-                    style.Width = DpiScale(60);
+                    style.Width = DpiScale(200);
                 }
 
                 LayoutPanel.ColumnStyles.Add(style);
