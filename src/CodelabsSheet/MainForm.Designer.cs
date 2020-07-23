@@ -61,10 +61,8 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btnSave = new System.Windows.Forms.Button();
             this.spreadsheetControl1 = new CodelabsSheet.Controls.SpreadsheetControl();
             this.menuStrip1.SuspendLayout();
-            this.spreadsheetControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -315,19 +313,8 @@
             // 
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(510, 252);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 1;
-            this.btnSave.Text = "&Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // spreadsheetControl1
             // 
-            this.spreadsheetControl1.Controls.Add(this.btnSave);
             this.spreadsheetControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spreadsheetControl1.Location = new System.Drawing.Point(0, 24);
             this.spreadsheetControl1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
@@ -350,7 +337,6 @@
             this.Text = "CodeLabs Sheet";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.spreadsheetControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,7 +377,6 @@
         private System.Windows.Forms.ToolStripMenuItem addStripMenuItem1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private Controls.SpreadsheetControl spreadsheetControl1;
-        public System.Windows.Forms.Button btnSave;
     }
 }
 

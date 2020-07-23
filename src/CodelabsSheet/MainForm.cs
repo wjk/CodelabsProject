@@ -17,6 +17,7 @@ namespace CodelabsSheet
         public MainForm()
         {
             InitializeComponent();
+            saveToolStripMenuItem.Click += btnSave_Click;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -63,10 +64,13 @@ namespace CodelabsSheet
             saveFileDialog.Title = "Save Text";
             saveFileDialog.CheckFileExists = true;
             saveFileDialog.CheckPathExists = true;
-            saveFileDialog.DefaultExt = "Text";
+            saveFileDialog.Filter = "text files (*.txt)|*.txt";
             if (saveFileDialog.ShowDialog() == DialogResult.OK) 
             {
-                File.WriteAllText(saveFileDialog.FileName, spreadsheetControl1.Text);
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine($"{spreadsheetControl1.RowCount} {spreadsheetControl1.ColumnCount}");
+
+                File.WriteAllText(saveFileDialog.FileName, sb.ToString());
             }
         }
 
