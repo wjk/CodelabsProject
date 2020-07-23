@@ -24,6 +24,44 @@ namespace CodelabsSheet
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Text files (*.txt)|*.txt";
+            dialog.Title = "Open File";
+            dialog.CheckPathExists = true;
+            dialog.CheckFileExists = true;
+            dialog.Multiselect = false;
+
+            if (dialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            string[] lines = File.ReadAllLines(dialog.FileName);
+            string[] sizes = lines[0].Split(" ");
+
+            if (int.TryParse(sizes[0], out int rows) && int.TryParse(sizes[1], out int columns))
+            {
+                if (rows != spreadsheetControl1.RowCount || columns != spreadsheetControl1.ColumnCount)
+                {
+                    throw new ArgumentException("Row/column count mismatch");
+                }
+
+                int row = -1, col = -1;
+                foreach (string line in lines.Skip(1))
+                {
+                    if (line == "")
+                    {
+                        row++;
+                        col = 0;
+                    }
+
+                    spreadsheetControl1.SetCellContents(row, col, line);
+                    col++;
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Could not parse rows and columns");
+            }
         }
 
         protected override void OnLoad(EventArgs e)
