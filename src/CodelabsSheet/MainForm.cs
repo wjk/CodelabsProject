@@ -42,7 +42,8 @@ namespace CodelabsSheet
             {
                 if (rows != spreadsheetControl1.RowCount || columns != spreadsheetControl1.ColumnCount)
                 {
-                    MessageBox.Show("Error Cannot Open Saved Files from other Programs");
+                    MessageBox.Show(this, "This file was not created by this program. It cannot be opened.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -62,7 +63,8 @@ namespace CodelabsSheet
             }
             else
             {
-                MessageBox.Show("Error Cannot Open Saved Files from other Programs");
+                MessageBox.Show(this, "This file was not created by this program. It cannot be opened.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }
@@ -91,7 +93,8 @@ namespace CodelabsSheet
             }
             else
             {
-                MessageBox.Show("Error Only Integers Allowed");
+                MessageBox.Show(this, "Cannot add two non-integer values. Please enter only integers in fields R1/C1 and R1/C2.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
