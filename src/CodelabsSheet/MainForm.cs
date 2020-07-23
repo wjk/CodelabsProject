@@ -42,7 +42,8 @@ namespace CodelabsSheet
             {
                 if (rows != spreadsheetControl1.RowCount || columns != spreadsheetControl1.ColumnCount)
                 {
-                    throw new ArgumentException("Row/column count mismatch");
+                    MessageBox.Show("Error Cannot Open Saved Files from other Programs");
+                    return;
                 }
 
                 int row = -1, col = -1;
@@ -61,7 +62,8 @@ namespace CodelabsSheet
             }
             else
             {
-                throw new ArgumentException("Could not parse rows and columns");
+                MessageBox.Show("Error Cannot Open Saved Files from other Programs");
+                return;
             }
         }
 
