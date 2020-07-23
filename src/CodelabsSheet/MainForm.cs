@@ -52,6 +52,7 @@ namespace CodelabsSheet
                     {
                         row++;
                         col = 0;
+                        continue;
                     }
 
                     spreadsheetControl1.SetCellContents(row, col, line);
