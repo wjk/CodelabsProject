@@ -72,7 +72,7 @@ namespace CodelabsSheet
                 {
                     sb.AppendLine();
 
-                    for (int col = 0; col < spreadsheetControl1.ColumnCount; row++)
+                    for (int col = 0; col < spreadsheetControl1.ColumnCount; col++)
                     {
                         sb.AppendLine(spreadsheetControl1.GetCellContents(row, col));
                     }
