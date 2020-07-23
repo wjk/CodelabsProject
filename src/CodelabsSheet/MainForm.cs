@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CodelabsSheet.Controls;
+using System.IO;
 
 namespace CodelabsSheet
 {
@@ -49,6 +50,29 @@ namespace CodelabsSheet
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Title = "Save Text";
+            saveFileDialog.CheckFileExists = true;
+            saveFileDialog.CheckPathExists = true;
+            saveFileDialog.DefaultExt = "Text";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK) 
+            {
+                File.WriteAllText(saveFileDialog.FileName, spreadsheetControl1.Text);
+            }
+        }
+
+        private void spreadsheetControl1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
