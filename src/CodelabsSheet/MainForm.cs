@@ -18,6 +18,12 @@ namespace CodelabsSheet
         {
             InitializeComponent();
             saveToolStripMenuItem.Click += btnSave_Click;
+            openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
+        }
+
+        private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
         }
 
         protected override void OnLoad(EventArgs e)
