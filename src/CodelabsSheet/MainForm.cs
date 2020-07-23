@@ -65,10 +65,20 @@ namespace CodelabsSheet
             saveFileDialog.CheckFileExists = true;
             saveFileDialog.CheckPathExists = true;
             saveFileDialog.Filter = "text files (*.txt)|*.txt";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK) 
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine($"{spreadsheetControl1.RowCount} {spreadsheetControl1.ColumnCount}");
+
+                for (int row = 0; row < spreadsheetControl1.RowCount; row++)
+                {
+                    sb.AppendLine();
+
+                    for (int col = 0; col < spreadsheetControl1.ColumnCount; row++)
+                    {
+                        sb.AppendLine(spreadsheetControl1.GetCellContents(row, col));
+                    }
+                }
 
                 File.WriteAllText(saveFileDialog.FileName, sb.ToString());
             }
