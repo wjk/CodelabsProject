@@ -62,8 +62,6 @@ namespace CodelabsSheet
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Title = "Save Text";
-            saveFileDialog.CheckFileExists = true;
-            saveFileDialog.CheckPathExists = true;
             saveFileDialog.Filter = "text files (*.txt)|*.txt";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
