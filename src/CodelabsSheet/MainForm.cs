@@ -75,8 +75,6 @@ namespace CodelabsSheet
 
             exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
             addStripMenuItem1.Click += AddStripMenuItem1_Click;
-            subStripMenuItem1.Click += subsStripMenuItem1_Click;
-            divStripMenuItem1.Click += divStripMenuItem1_Click;
         }
 
         private void AddStripMenuItem1_Click(object sender, EventArgs e)

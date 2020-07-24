@@ -81,7 +81,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(926, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -393,7 +392,6 @@
         private System.Windows.Forms.ToolStripMenuItem addStripMenuItem1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private Controls.SpreadsheetControl spreadsheetControl1;
-        private System.Windows.Forms.ToolStripMenuItem addStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem subStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem divStripMenuItem1;
     }
