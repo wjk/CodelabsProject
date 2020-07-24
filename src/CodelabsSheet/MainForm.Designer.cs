@@ -51,6 +51,8 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.subStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.divStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +80,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(659, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -178,7 +181,9 @@
             this.pasteToolStripMenuItem,
             this.toolStripSeparator4,
             this.selectAllToolStripMenuItem,
-            this.addStripMenuItem1});
+            this.addStripMenuItem1,
+            this.subStripMenuItem1,
+            this.divStripMenuItem1});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 22);
             this.editToolStripMenuItem.Text = "&Edit";
@@ -244,7 +249,19 @@
             // 
             this.addStripMenuItem1.Name = "addStripMenuItem1";
             this.addStripMenuItem1.Size = new System.Drawing.Size(144, 22);
-            this.addStripMenuItem1.Text = "ADD";
+            this.addStripMenuItem1.Text = "Addition";
+            // 
+            // subStripMenuItem1
+            // 
+            this.subStripMenuItem1.Name = "subStripMenuItem1";
+            this.subStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.subStripMenuItem1.Text = "Substraction";
+            // 
+            // divStripMenuItem1
+            // 
+            this.divStripMenuItem1.Name = "divStripMenuItem1";
+            this.divStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.divStripMenuItem1.Text = "Division";
             // 
             // toolsToolStripMenuItem
             // 
@@ -310,7 +327,6 @@
             // 
             // spreadsheetControl1
             // 
-            this.spreadsheetControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spreadsheetControl1.Location = new System.Drawing.Point(0, 24);
             this.spreadsheetControl1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.spreadsheetControl1.Name = "spreadsheetControl1";
@@ -323,8 +339,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(659, 342);
-            this.Controls.Add(this.spreadsheetControl1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.spreadsheetControl1);
             this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.MinimumSize = new System.Drawing.Size(675, 361);
             this.Name = "MainForm";
@@ -370,6 +386,8 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private Controls.SpreadsheetControl spreadsheetControl1;
         private System.Windows.Forms.ToolStripMenuItem addStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem subStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem divStripMenuItem1;
     }
 }
 
