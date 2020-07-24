@@ -17,6 +17,7 @@ namespace CodelabsSheet
         public MainForm()
         {
             InitializeComponent();
+            spreadsheetControl1.Dock = DockStyle.Fill;
             saveToolStripMenuItem.Click += btnSave_Click;
             openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
         }
