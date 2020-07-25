@@ -138,7 +138,19 @@ namespace CodelabsSheet.Controls
 
                 if (newRowCount < oldRowCount)
                 {
-                    throw new NotImplementedException();
+                    int diff = oldRowCount - newRowCount;
+                    while (diff-- != 0)
+                    {
+                        int row = LayoutPanel.RowCount - 1;
+                        for (int col = 0; col < LayoutPanel.ColumnCount; col++)
+                        {
+                            Control ctrl = LayoutPanel.GetControlFromPosition(col, row);
+                            if (ctrl != null) LayoutPanel.Controls.Remove(ctrl);
+                        }
+
+                        LayoutPanel.RowStyles.Remove(LayoutPanel.RowStyles[row]);
+                        LayoutPanel.RowCount--;
+                    }
                 }
                 else
                 {
@@ -192,7 +204,20 @@ namespace CodelabsSheet.Controls
 
                 if (newColumnCount < oldColumnCount)
                 {
-                    throw new NotImplementedException();
+                    int diff = oldColumnCount - newColumnCount;
+                    while (diff-- != 0)
+                    {
+                        int col = LayoutPanel.ColumnCount - 1;
+                        for (int row = 0; row < LayoutPanel.RowCount; row++)
+                        {
+                            Control ctrl = LayoutPanel.GetControlFromPosition(col, row);
+                            if (ctrl is Button) continue; // Don't remove the "Add Row" button, which spans multiple columns.
+                            if (ctrl != null) LayoutPanel.Controls.Remove(ctrl);
+                        }
+
+                        LayoutPanel.ColumnStyles.RemoveAt(col);
+                        LayoutPanel.ColumnCount--;
+                    }
                 }
                 else
                 {
