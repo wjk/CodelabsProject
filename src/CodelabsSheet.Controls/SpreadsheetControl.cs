@@ -133,6 +133,8 @@ namespace CodelabsSheet.Controls
 
                 LayoutPanel.SuspendLayout();
                 LayoutPanel.Controls.Remove(AddRowButton);
+                LayoutPanel.RowStyles.RemoveAt(LayoutPanel.RowStyles.Count - 1);
+                LayoutPanel.RowCount--;
 
                 if (newRowCount < oldRowCount)
                 {
@@ -140,15 +142,11 @@ namespace CodelabsSheet.Controls
                 }
                 else
                 {
-                    LayoutPanel.RowCount = newRowCount;
-                    LayoutPanel.RowStyles.Clear();
-                    for (int row = 0; row < newRowCount; row++)
-                    {
-                        LayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-                    }
-
                     for (int row = oldRowCount; row < newRowCount; row++)
                     {
+                        LayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                        LayoutPanel.RowCount++;
+
                         Label label = new Label();
                         label.Text = $"R{row - 1:D}";
                         label.TextAlign = ContentAlignment.MiddleRight;
@@ -164,6 +162,8 @@ namespace CodelabsSheet.Controls
                     }
                 }
 
+                LayoutPanel.RowCount++;
+                LayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
                 LayoutPanel.Controls.Add(AddRowButton, 1, newRowCount - 1);
                 LayoutPanel.ResumeLayout();
             }
