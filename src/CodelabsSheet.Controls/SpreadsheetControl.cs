@@ -22,6 +22,7 @@ namespace CodelabsSheet.Controls
             AddRowButton.Click += (s, e) => RowCount++;
             AddColumnButton.Text = "Add Column";
             AddColumnButton.AutoSize = true;
+            AddColumnButton.Click += (s, e) => ColumnCount++;
 
             LayoutPanel.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
             LayoutPanel.RowCount = 5;
@@ -135,15 +136,7 @@ namespace CodelabsSheet.Controls
 
                 if (newRowCount < oldRowCount)
                 {
-                    int diff = LayoutPanel.RowCount - newRowCount;
-                    for (int row = diff; row < newRowCount; row++)
-                    {
-                        for (int col = 0; col < LayoutPanel.ColumnCount; col++)
-                        {
-                            Control ctrl = LayoutPanel.GetControlFromPosition(col, LayoutPanel.RowCount - 1);
-                            if (ctrl != null) LayoutPanel.Controls.Remove(ctrl);
-                        }
-                    }
+                    throw new NotImplementedException();
                 }
                 else
                 {
@@ -182,6 +175,52 @@ namespace CodelabsSheet.Controls
             {
                 // Subtract 2 to remove the header and footer rows.
                 return LayoutPanel.ColumnCount - 2;
+            }
+
+            set
+            {
+                if (value < 3) throw new InvalidOperationException("ColumnCount cannot be less than 3");
+                
+                int oldColumnCount = LayoutPanel.ColumnCount;
+                int newColumnCount = value + 2;
+                if (newColumnCount == oldColumnCount) return;
+
+                LayoutPanel.SuspendLayout();
+                LayoutPanel.Controls.Remove(AddColumnButton);
+                LayoutPanel.ColumnStyles.RemoveAt(LayoutPanel.ColumnStyles.Count - 1);
+                LayoutPanel.ColumnCount--;
+
+                if (newColumnCount < oldColumnCount)
+                {
+                    throw new NotImplementedException();
+                }
+                else
+                {
+                    for (int col = oldColumnCount; col < newColumnCount; col++)
+                    {
+                        ColumnStyle columnStyle = new ColumnStyle(SizeType.Absolute, DpiScale(200));
+                        int index = LayoutPanel.ColumnStyles.Add(columnStyle);
+                        LayoutPanel.ColumnCount++;
+
+                        Label label = new Label();
+                        label.Text = $"C{col - 1:D}";
+                        label.TextAlign = ContentAlignment.MiddleRight;
+                        label.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+                        LayoutPanel.Controls.Add(label, col - 1, 0);
+
+                        for (int row = 1; row < LayoutPanel.RowCount - 1; row++)
+                        {
+                            TextBox box = new TextBox();
+                            box.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+                            LayoutPanel.Controls.Add(box, col - 1, row);
+                        }
+                    }
+                }
+
+                LayoutPanel.ColumnCount++;
+                LayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+                LayoutPanel.Controls.Add(AddColumnButton, newColumnCount - 1, 1);
+                LayoutPanel.ResumeLayout();
             }
         }
     }
