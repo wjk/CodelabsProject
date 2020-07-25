@@ -204,7 +204,7 @@ namespace CodelabsSheet.Controls
 
                         Label label = new Label();
                         label.Text = $"C{col - 1:D}";
-                        label.TextAlign = ContentAlignment.MiddleRight;
+                        label.TextAlign = ContentAlignment.BottomCenter;
                         label.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
                         LayoutPanel.Controls.Add(label, col - 1, 0);
 
