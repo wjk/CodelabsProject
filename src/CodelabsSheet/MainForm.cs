@@ -20,6 +20,13 @@ namespace CodelabsSheet
             spreadsheetControl1.Dock = DockStyle.Fill;
             saveToolStripMenuItem.Click += btnSave_Click;
             openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
+            aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
+        }
+        //Three Names, CodelabsSheet, etc
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog(this);
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -41,12 +48,14 @@ namespace CodelabsSheet
 
             if (int.TryParse(sizes[0], out int rows) && int.TryParse(sizes[1], out int columns))
             {
-                if (rows != spreadsheetControl1.RowCount || columns != spreadsheetControl1.ColumnCount)
+                if (rows < 3 || columns < 3)
                 {
                     MessageBox.Show(this, "This file was not created by this program. It cannot be opened.", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                spreadsheetControl1.RowCount = rows;
+                spreadsheetControl1.ColumnCount = columns;
 
                 int row = -1, col = -1;
                 foreach (string line in lines.Skip(1))
@@ -58,7 +67,14 @@ namespace CodelabsSheet
                         continue;
                     }
 
-                    spreadsheetControl1.SetCellContents(row, col, line);
+                    if (line[0] != '>')
+                    {
+                        MessageBox.Show(this, "This file was not created by this program. It cannot be opened.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    spreadsheetControl1.SetCellContents(row, col, line.Substring(1));
                     col++;
                 }
             }
@@ -125,7 +141,7 @@ namespace CodelabsSheet
 
                     for (int col = 0; col < spreadsheetControl1.ColumnCount; col++)
                     {
-                        sb.AppendLine(spreadsheetControl1.GetCellContents(row, col));
+                        sb.AppendLine(">" + spreadsheetControl1.GetCellContents(row, col));
                     }
                 }
 

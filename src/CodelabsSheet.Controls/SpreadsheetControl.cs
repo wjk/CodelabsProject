@@ -19,14 +19,17 @@ namespace CodelabsSheet.Controls
         {
             AddRowButton.Text = "Add Row";
             AddRowButton.AutoSize = true;
+            AddRowButton.Click += (s, e) => RowCount++;
             AddColumnButton.Text = "Add Column";
             AddColumnButton.AutoSize = true;
+            AddColumnButton.Click += (s, e) => ColumnCount++;
 
+            LayoutPanel.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
             LayoutPanel.RowCount = 5;
             LayoutPanel.ColumnCount = 5;
             LayoutPanel.Controls.Add(AddRowButton, 1, 4);
             LayoutPanel.Controls.Add(AddColumnButton, 4, 1);
-            LayoutPanel.SetColumnSpan(AddRowButton, 5);
+            LayoutPanel.SetColumnSpan(AddRowButton, 4);
 
             for (int row = 0; row < LayoutPanel.RowCount; row++)
             {
@@ -68,6 +71,7 @@ namespace CodelabsSheet.Controls
                         Label label = new Label();
                         label.Text = $"C{col:D}";
                         label.TextAlign = ContentAlignment.BottomCenter;
+                        label.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
                         label.AutoSize = true;
                         LayoutPanel.Controls.Add(label, col, row);
                     }
@@ -95,8 +99,8 @@ namespace CodelabsSheet.Controls
 
         public string GetCellContents(int row, int column)
         {
-            if (row < 0 || row >= RowCount) throw new ArgumentOutOfRangeException("Row number too big");
-            if (column < 0 || column >= ColumnCount) throw new ArgumentOutOfRangeException("Column number too big");
+            if (row < 0 || row >= RowCount) throw new ArgumentOutOfRangeException(nameof(row));
+            if (column < 0 || column >= ColumnCount) throw new ArgumentOutOfRangeException(nameof(column));
 
             TextBox box = (TextBox)LayoutPanel.GetControlFromPosition(column + 1, row + 1);
             return box.Text;
@@ -104,8 +108,8 @@ namespace CodelabsSheet.Controls
 
         public void SetCellContents(int row, int column, string text)
         {
-            if (row < 0 || row >= RowCount) throw new ArgumentOutOfRangeException("Row number too big");
-            if (column < 0 || column >= ColumnCount) throw new ArgumentOutOfRangeException("Column number too big");
+            if (row < 0 || row >= RowCount) throw new ArgumentOutOfRangeException(nameof(row));
+            if (column < 0 || column >= ColumnCount) throw new ArgumentOutOfRangeException(nameof(column));
 
             TextBox box = (TextBox)LayoutPanel.GetControlFromPosition(column + 1, row + 1);
             box.Text = text;
@@ -118,6 +122,63 @@ namespace CodelabsSheet.Controls
                 // Subtract 2 to remove the header and footer rows.
                 return LayoutPanel.RowCount - 2;
             }
+
+            set
+            {
+                if (value < 3) throw new InvalidOperationException("RowCount cannot be less than 3");
+
+                int oldRowCount = LayoutPanel.RowCount;
+                int newRowCount = value + 2;
+                if (newRowCount == oldRowCount) return;
+
+                LayoutPanel.SuspendLayout();
+                LayoutPanel.Controls.Remove(AddRowButton);
+                LayoutPanel.RowStyles.RemoveAt(LayoutPanel.RowStyles.Count - 1);
+                LayoutPanel.RowCount--;
+
+                if (newRowCount < oldRowCount)
+                {
+                    int diff = oldRowCount - newRowCount;
+                    while (diff-- != 0)
+                    {
+                        int row = LayoutPanel.RowCount - 1;
+                        for (int col = 0; col < LayoutPanel.ColumnCount; col++)
+                        {
+                            Control ctrl = LayoutPanel.GetControlFromPosition(col, row);
+                            if (ctrl != null) LayoutPanel.Controls.Remove(ctrl);
+                        }
+
+                        LayoutPanel.RowStyles.Remove(LayoutPanel.RowStyles[row]);
+                        LayoutPanel.RowCount--;
+                    }
+                }
+                else
+                {
+                    for (int row = oldRowCount; row < newRowCount; row++)
+                    {
+                        LayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                        LayoutPanel.RowCount++;
+
+                        Label label = new Label();
+                        label.Text = $"R{row - 1:D}";
+                        label.TextAlign = ContentAlignment.MiddleRight;
+                        label.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+                        LayoutPanel.Controls.Add(label, 0, row - 1);
+
+                        for (int col = 1; col < LayoutPanel.ColumnCount - 1; col++)
+                        {
+                            TextBox box = new TextBox();
+                            box.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+                            LayoutPanel.Controls.Add(box, col, row - 1);
+                        }
+                    }
+                }
+
+                LayoutPanel.RowCount++;
+                LayoutPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                LayoutPanel.Controls.Add(AddRowButton, 1, newRowCount - 1);
+                LayoutPanel.ResumeLayout();
+            }
         }
 
         public int ColumnCount
@@ -126,6 +187,65 @@ namespace CodelabsSheet.Controls
             {
                 // Subtract 2 to remove the header and footer rows.
                 return LayoutPanel.ColumnCount - 2;
+            }
+
+            set
+            {
+                if (value < 3) throw new InvalidOperationException("ColumnCount cannot be less than 3");
+                
+                int oldColumnCount = LayoutPanel.ColumnCount;
+                int newColumnCount = value + 2;
+                if (newColumnCount == oldColumnCount) return;
+
+                LayoutPanel.SuspendLayout();
+                LayoutPanel.Controls.Remove(AddColumnButton);
+                LayoutPanel.ColumnStyles.RemoveAt(LayoutPanel.ColumnStyles.Count - 1);
+                LayoutPanel.ColumnCount--;
+
+                if (newColumnCount < oldColumnCount)
+                {
+                    int diff = oldColumnCount - newColumnCount;
+                    while (diff-- != 0)
+                    {
+                        int col = LayoutPanel.ColumnCount - 1;
+                        for (int row = 0; row < LayoutPanel.RowCount; row++)
+                        {
+                            Control ctrl = LayoutPanel.GetControlFromPosition(col, row);
+                            if (ctrl is Button) continue; // Don't remove the "Add Row" button, which spans multiple columns.
+                            if (ctrl != null) LayoutPanel.Controls.Remove(ctrl);
+                        }
+
+                        LayoutPanel.ColumnStyles.RemoveAt(col);
+                        LayoutPanel.ColumnCount--;
+                    }
+                }
+                else
+                {
+                    for (int col = oldColumnCount; col < newColumnCount; col++)
+                    {
+                        ColumnStyle columnStyle = new ColumnStyle(SizeType.Absolute, DpiScale(200));
+                        int index = LayoutPanel.ColumnStyles.Add(columnStyle);
+                        LayoutPanel.ColumnCount++;
+
+                        Label label = new Label();
+                        label.Text = $"C{col - 1:D}";
+                        label.TextAlign = ContentAlignment.BottomCenter;
+                        label.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+                        LayoutPanel.Controls.Add(label, col - 1, 0);
+
+                        for (int row = 1; row < LayoutPanel.RowCount - 1; row++)
+                        {
+                            TextBox box = new TextBox();
+                            box.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom;
+                            LayoutPanel.Controls.Add(box, col - 1, row);
+                        }
+                    }
+                }
+
+                LayoutPanel.ColumnCount++;
+                LayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+                LayoutPanel.Controls.Add(AddColumnButton, newColumnCount - 1, 1);
+                LayoutPanel.ResumeLayout();
             }
         }
     }
