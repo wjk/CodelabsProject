@@ -20,6 +20,13 @@ namespace CodelabsSheet
             spreadsheetControl1.Dock = DockStyle.Fill;
             saveToolStripMenuItem.Click += btnSave_Click;
             openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
+            aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
+        }
+        //Three Names, CodelabsSheet, etc
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog(this);
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
