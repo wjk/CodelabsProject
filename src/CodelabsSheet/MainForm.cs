@@ -165,6 +165,13 @@ namespace CodelabsSheet
 
             if (int.TryParse(s1, out int v1) && int.TryParse(s2, out int v2))
             {
+                if (v2 == 0)
+                {
+                    MessageBox.Show(this, "Please enter an integer more than 0.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 int sum = v1 / v2;
                 spreadsheetControl1.SetCellContents(0, 2, sum.ToString());
             }
