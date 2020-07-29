@@ -37,6 +37,7 @@
             this.addStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.subStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.divStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mulStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -112,7 +113,8 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addStripMenuItem1,
             this.subStripMenuItem1,
-            this.divStripMenuItem1});
+            this.divStripMenuItem1,
+            this.mulStripMenuItem1});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 22);
             this.editToolStripMenuItem.Text = "&Edit";
@@ -120,20 +122,26 @@
             // addStripMenuItem1
             // 
             this.addStripMenuItem1.Name = "addStripMenuItem1";
-            this.addStripMenuItem1.Size = new System.Drawing.Size(140, 22);
+            this.addStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.addStripMenuItem1.Text = "Addition";
             // 
             // subStripMenuItem1
             // 
             this.subStripMenuItem1.Name = "subStripMenuItem1";
-            this.subStripMenuItem1.Size = new System.Drawing.Size(140, 22);
+            this.subStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.subStripMenuItem1.Text = "Substraction";
             // 
             // divStripMenuItem1
             // 
             this.divStripMenuItem1.Name = "divStripMenuItem1";
-            this.divStripMenuItem1.Size = new System.Drawing.Size(140, 22);
+            this.divStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.divStripMenuItem1.Text = "Division";
+            // 
+            // mulStripMenuItem1
+            // 
+            this.mulStripMenuItem1.Name = "mulStripMenuItem1";
+            this.mulStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.mulStripMenuItem1.Text = "Multiplication";
             // 
             // helpToolStripMenuItem
             // 
@@ -165,10 +173,12 @@
             // 
             // spreadsheetControl1
             // 
+            this.spreadsheetControl1.ColumnCount = 3;
             this.spreadsheetControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spreadsheetControl1.Location = new System.Drawing.Point(0, 0);
             this.spreadsheetControl1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.spreadsheetControl1.Name = "spreadsheetControl1";
+            this.spreadsheetControl1.RowCount = 3;
             this.spreadsheetControl1.Size = new System.Drawing.Size(659, 318);
             this.spreadsheetControl1.TabIndex = 1;
             this.spreadsheetControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.spreadsheetControl1_Paint);
@@ -357,6 +367,7 @@
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mulStripMenuItem1;
     }
 }
 
