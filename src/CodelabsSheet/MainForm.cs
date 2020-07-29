@@ -22,8 +22,10 @@ namespace CodelabsSheet
             openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
             aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
             exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
-            addStripMenuItem1.Click += AddStripMenuItem1_Click;
-
+            addStripMenuItem1.Click += AddToolStripMenuItem_Click;
+            subStripMenuItem1.Click += SubtractToolStripMenuItem_Click;
+            mulStripMenuItem1.Click += MultiplyToolStripMenuItem_Click;
+            divStripMenuItem1.Click += DivideToolStripMenuItem_Click;
         }
         //Three Names, CodelabsSheet, etc
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -89,8 +91,49 @@ namespace CodelabsSheet
             }
         }
 
-        
-        private void AddStripMenuItem1_Click(object sender, EventArgs e)
+        private void SubtractToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string s1 = spreadsheetControl1.GetCellContents(0, 0);
+            string s2 = spreadsheetControl1.GetCellContents(0, 1);
+            if (s1 == "" || s2 == "")
+            {
+                return;
+            }
+
+            if (int.TryParse(s1, out int v1) && int.TryParse(s2, out int v2))
+            {
+                int sum = v1 - v2;
+                spreadsheetControl1.SetCellContents(0, 2, sum.ToString());
+            }
+            else
+            {
+                MessageBox.Show(this, "Cannot add two non-integer values. Please enter only integers in fields R1/C1 and R1/C2.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MultiplyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string s1 = spreadsheetControl1.GetCellContents(0, 0);
+            string s2 = spreadsheetControl1.GetCellContents(0, 1);
+            if (s1 == "" || s2 == "")
+            {
+                return;
+            }
+
+            if (int.TryParse(s1, out int v1) && int.TryParse(s2, out int v2))
+            {
+                int sum = v1 * v2;
+                spreadsheetControl1.SetCellContents(0, 2, sum.ToString());
+            }
+            else
+            {
+                MessageBox.Show(this, "Cannot add two non-integer values. Please enter only integers in fields R1/C1 and R1/C2.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void AddToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string s1 = spreadsheetControl1.GetCellContents(0, 0);
             string s2 = spreadsheetControl1.GetCellContents(0, 1);
@@ -102,6 +145,27 @@ namespace CodelabsSheet
             if (int.TryParse(s1, out int v1) && int.TryParse(s2, out int v2))
             {
                 int sum = v1 + v2;
+                spreadsheetControl1.SetCellContents(0, 2, sum.ToString());
+            }
+            else
+            {
+                MessageBox.Show(this, "Cannot add two non-integer values. Please enter only integers in fields R1/C1 and R1/C2.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DivideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string s1 = spreadsheetControl1.GetCellContents(0, 0);
+            string s2 = spreadsheetControl1.GetCellContents(0, 1);
+            if (s1 == "" || s2 == "")
+            {
+                return;
+            }
+
+            if (int.TryParse(s1, out int v1) && int.TryParse(s2, out int v2))
+            {
+                int sum = v1 / v2;
                 spreadsheetControl1.SetCellContents(0, 2, sum.ToString());
             }
             else
