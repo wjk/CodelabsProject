@@ -97,6 +97,8 @@ namespace CodelabsSheet
             string s2 = spreadsheetControl1.GetCellContents(0, 1);
             if (s1 == "" || s2 == "")
             {
+                MessageBox.Show(this, "Please enter two integers in fields R1/C1 and R1/C2.", "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -118,6 +120,8 @@ namespace CodelabsSheet
             string s2 = spreadsheetControl1.GetCellContents(0, 1);
             if (s1 == "" || s2 == "")
             {
+                MessageBox.Show(this, "Please enter two integers in fields R1/C1 and R1/C2.", "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -139,6 +143,8 @@ namespace CodelabsSheet
             string s2 = spreadsheetControl1.GetCellContents(0, 1);
             if (s1 == "" || s2 == "")
             {
+                MessageBox.Show(this, "Please enter two integers in fields R1/C1 and R1/C2.", "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -160,6 +166,8 @@ namespace CodelabsSheet
             string s2 = spreadsheetControl1.GetCellContents(0, 1);
             if (s1 == "" || s2 == "")
             {
+                MessageBox.Show(this, "Please enter two integers in fields R1/C1 and R1/C2.", "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
