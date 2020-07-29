@@ -123,6 +123,7 @@
             // 
             // AboutForm
             // 
+            this.AcceptButton = this.btnClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1335, 322);
