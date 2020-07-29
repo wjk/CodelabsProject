@@ -21,6 +21,9 @@ namespace CodelabsSheet
             saveToolStripMenuItem.Click += btnSave_Click;
             openToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
             aboutToolStripMenuItem.Click += AboutToolStripMenuItem_Click;
+            exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
+            addStripMenuItem1.Click += AddStripMenuItem1_Click;
+
         }
         //Three Names, CodelabsSheet, etc
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,14 +89,7 @@ namespace CodelabsSheet
             }
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-
-            exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
-            addStripMenuItem1.Click += AddStripMenuItem1_Click;
-        }
-
+        
         private void AddStripMenuItem1_Click(object sender, EventArgs e)
         {
             string s1 = spreadsheetControl1.GetCellContents(0, 0);
