@@ -36,8 +36,8 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.subStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.divStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mulStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.divStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -113,8 +113,8 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addStripMenuItem1,
             this.subStripMenuItem1,
-            this.divStripMenuItem1,
-            this.mulStripMenuItem1});
+            this.mulStripMenuItem1,
+            this.divStripMenuItem1});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 22);
             this.editToolStripMenuItem.Text = "&Edit";
@@ -129,19 +129,19 @@
             // 
             this.subStripMenuItem1.Name = "subStripMenuItem1";
             this.subStripMenuItem1.Size = new System.Drawing.Size(148, 22);
-            this.subStripMenuItem1.Text = "Substraction";
-            // 
-            // divStripMenuItem1
-            // 
-            this.divStripMenuItem1.Name = "divStripMenuItem1";
-            this.divStripMenuItem1.Size = new System.Drawing.Size(148, 22);
-            this.divStripMenuItem1.Text = "Division";
+            this.subStripMenuItem1.Text = "Subtraction";
             // 
             // mulStripMenuItem1
             // 
             this.mulStripMenuItem1.Name = "mulStripMenuItem1";
             this.mulStripMenuItem1.Size = new System.Drawing.Size(148, 22);
             this.mulStripMenuItem1.Text = "Multiplication";
+            // 
+            // divStripMenuItem1
+            // 
+            this.divStripMenuItem1.Name = "divStripMenuItem1";
+            this.divStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.divStripMenuItem1.Text = "Division";
             // 
             // helpToolStripMenuItem
             // 
