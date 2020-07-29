@@ -157,10 +157,6 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.aboutToolStripMenuItem.Text = "&About...";
             // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.spreadsheetControl1);
@@ -181,7 +177,6 @@
             this.spreadsheetControl1.RowCount = 3;
             this.spreadsheetControl1.Size = new System.Drawing.Size(659, 318);
             this.spreadsheetControl1.TabIndex = 1;
-            this.spreadsheetControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.spreadsheetControl1_Paint);
             // 
             // exitToolStripMenuItem
             // 

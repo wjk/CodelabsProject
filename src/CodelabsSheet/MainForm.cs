@@ -195,11 +195,6 @@ namespace CodelabsSheet
             Close();
         }
 
-        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -222,11 +217,6 @@ namespace CodelabsSheet
 
                 File.WriteAllText(saveFileDialog.FileName, sb.ToString());
             }
-        }
-
-        private void spreadsheetControl1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
